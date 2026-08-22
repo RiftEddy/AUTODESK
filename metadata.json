@@ -1,0 +1,6 @@
+{
+  "name": "Autodeck",
+  "description": "AI-powered front-desk and sales-closer for trade contractors and service businesses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
