@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, Zap, CheckCircle2, Phone, Mail, Building, Flame, Droplets, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { TradeType } from '../types';
+import { addContractorApplication } from '../services/applicationStore';
 
 interface EarlyAccessModalProps {
   isOpen: boolean;
@@ -22,6 +23,17 @@ export const EarlyAccessModal: React.FC<EarlyAccessModalProps> = ({ isOpen, onCl
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!businessName || !phone) return;
+    
+    // Save to application store
+    addContractorApplication({
+      trade,
+      businessName: businessName.trim(),
+      ownerName: ownerName.trim() || 'Owner',
+      phone: phone.trim(),
+      email: email.trim() || undefined,
+      crewSize,
+    });
+
     setIsSubmitted(true);
   };
 

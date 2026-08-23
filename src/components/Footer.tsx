@@ -1,13 +1,14 @@
 import React from 'react';
-import { Zap, Terminal, Shield, Heart } from 'lucide-react';
+import { Zap, Terminal, Shield, Heart, Lock } from 'lucide-react';
 import { ViewMode } from '../types';
 
 interface FooterProps {
   onNavigate: (view: ViewMode) => void;
   onOpenEarlyAccess: () => void;
+  onOpenAdminAccess?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEarlyAccess }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEarlyAccess, onOpenAdminAccess }) => {
   return (
     <footer className="bg-slate-950 border-t border-white/5 pt-16 pb-12 text-slate-400 text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,10 +86,25 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEarlyAccess })
 
         </div>
 
-        {/* Bottom copyright */}
+        {/* Bottom copyright & Discreet Admin Lock */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500 font-mono">
-          <div>
-            © {new Date().getFullYear()} Autodeck Technologies, Inc. All rights reserved.
+          <div className="flex items-center gap-3">
+            <span>
+              © {new Date().getFullYear()} Autodeck Technologies, Inc. All rights reserved.
+            </span>
+            {/* Hidden / Discreet Admin Lock Symbol */}
+            {onOpenAdminAccess && (
+              <button
+                type="button"
+                id="footer-hidden-admin-lock-btn"
+                onClick={onOpenAdminAccess}
+                title="Admin Application Vault"
+                aria-label="Admin Application Vault"
+                className="opacity-20 hover:opacity-100 p-1 rounded-md text-slate-500 hover:text-slate-200 hover:bg-slate-900 transition-all duration-300 cursor-pointer"
+              >
+                <Lock className="w-3.5 h-3.5" />
+              </button>
+            )}
           </div>
           <div className="flex items-center gap-4">
             <button

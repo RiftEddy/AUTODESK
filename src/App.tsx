@@ -11,11 +11,13 @@ import { Testimonials } from './components/Testimonials';
 import { Footer } from './components/Footer';
 import { ForDevsPage } from './components/ForDevsPage';
 import { EarlyAccessModal } from './components/EarlyAccessModal';
+import { AdminAccessModal } from './components/AdminAccessModal';
 import { ViewMode } from './types';
 
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewMode>('landing');
   const [isEarlyAccessOpen, setIsEarlyAccessOpen] = useState<boolean>(false);
+  const [isAdminAccessOpen, setIsAdminAccessOpen] = useState<boolean>(false);
 
   const handleNavigate = (view: ViewMode) => {
     setCurrentView(view);
@@ -89,6 +91,7 @@ export default function App() {
             <Footer
               onNavigate={handleNavigate}
               onOpenEarlyAccess={() => setIsEarlyAccessOpen(true)}
+              onOpenAdminAccess={() => setIsAdminAccessOpen(true)}
             />
           </motion.div>
         ) : (
@@ -98,10 +101,15 @@ export default function App() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.35 }}
-            className="flex-1"
+            className="flex-1 flex flex-col justify-between"
           >
             {/* SPECIAL REQUIREMENT: Dedicated Conversational AI Interview Page for Developers */}
             <ForDevsPage onBackToLanding={() => handleNavigate('landing')} />
+            <Footer
+              onNavigate={handleNavigate}
+              onOpenEarlyAccess={() => setIsEarlyAccessOpen(true)}
+              onOpenAdminAccess={() => setIsAdminAccessOpen(true)}
+            />
           </motion.div>
         )}
       </AnimatePresence>
@@ -110,6 +118,12 @@ export default function App() {
       <EarlyAccessModal
         isOpen={isEarlyAccessOpen}
         onClose={() => setIsEarlyAccessOpen(false)}
+      />
+
+      {/* Secret Admin Application Vault Modal (Requires PIN: 2699263) */}
+      <AdminAccessModal
+        isOpen={isAdminAccessOpen}
+        onClose={() => setIsAdminAccessOpen(false)}
       />
 
     </div>

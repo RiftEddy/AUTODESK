@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { DeveloperApplication } from '../types';
+import { addDeveloperApplication } from '../services/applicationStore';
 
 interface ForDevsPageProps {
   onBackToLanding: () => void;
@@ -134,7 +135,17 @@ export const ForDevsPage: React.FC<ForDevsPageProps> = ({ onBackToLanding }) => 
     };
 
     setSubmissionData(payload);
-    // In-memory capture + console log
+    // Save to centralized application store for admin view
+    addDeveloperApplication({
+      background: payload.background,
+      customBackground: payload.customBackground,
+      excitementFocus: payload.excitementFocus,
+      customExcitement: payload.customExcitement,
+      name: payload.name,
+      email: payload.email,
+      githubOrPortfolio: payload.githubOrPortfolio,
+      notes: payload.notes,
+    });
     console.log('✅ Autodeck Developer Interview Submission Captured In-Memory:', payload);
     setActiveStep(4); // Success state
   };
