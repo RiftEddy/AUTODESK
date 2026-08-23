@@ -126,6 +126,25 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEarlyAccess, o
           </div>
         </div>
 
+        {/* Made by NIALEKAETI Watermark */}
+        <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-center">
+          <a
+            href="https://nialekaeti.netlify.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            id="watermark-nialekaeti"
+            className="group inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-950/90 hover:bg-slate-900 border border-white/10 hover:border-red-500/40 text-xs font-mono transition-all duration-300 shadow-md hover:shadow-red-500/10 cursor-pointer"
+          >
+            <span className="text-slate-400 group-hover:text-slate-300 transition-colors text-[11px] uppercase tracking-wider">
+              Made by
+            </span>
+            <span className="font-extrabold tracking-widest text-xs uppercase inline-flex items-center">
+              <span className="text-white" style={{ color: '#ffffff' }}>NIALE</span>
+              <span className="text-red-500" style={{ color: '#ef4444' }}>KAETI</span>
+            </span>
+          </a>
+        </div>
+
       </div>
     </footer>
   );

@@ -13,6 +13,7 @@ import { Footer } from './components/Footer';
 import { ForDevsPage } from './components/ForDevsPage';
 import { EarlyAccessModal } from './components/EarlyAccessModal';
 import { AdminAccessModal } from './components/AdminAccessModal';
+import { NdaConsentModal } from './components/NdaConsentModal';
 import { ViewMode } from './types';
 
 function MainLayout() {
@@ -126,6 +127,9 @@ function MainLayout() {
         isOpen={isAdminAccessOpen}
         onClose={() => setIsAdminAccessOpen(false)}
       />
+
+      {/* NDA / Confidentiality Agreement Pop-up Banner */}
+      <NdaConsentModal />
 
     </div>
   );
