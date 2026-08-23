@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
+import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { InteractiveLiveDemo } from './components/InteractiveLiveDemo';
@@ -14,7 +15,7 @@ import { EarlyAccessModal } from './components/EarlyAccessModal';
 import { AdminAccessModal } from './components/AdminAccessModal';
 import { ViewMode } from './types';
 
-export default function App() {
+function MainLayout() {
   const [currentView, setCurrentView] = useState<ViewMode>('landing');
   const [isEarlyAccessOpen, setIsEarlyAccessOpen] = useState<boolean>(false);
   const [isAdminAccessOpen, setIsAdminAccessOpen] = useState<boolean>(false);
@@ -42,7 +43,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 selection:bg-blue-500/30 selection:text-white flex flex-col font-['Plus_Jakarta_Sans',sans-serif]">
+    <div className="min-h-screen bg-slate-950 text-slate-200 selection:bg-blue-500/30 selection:text-white flex flex-col font-['Plus_Jakarta_Sans',sans-serif] transition-colors duration-200">
       
       {/* Sticky Global Navigation */}
       <Navbar
@@ -129,3 +130,12 @@ export default function App() {
     </div>
   );
 }
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <MainLayout />
+    </ThemeProvider>
+  );
+}
+

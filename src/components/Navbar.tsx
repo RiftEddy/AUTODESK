@@ -1,6 +1,7 @@
 import React from 'react';
-import { Terminal, Shield, Zap, Sparkles, PhoneCall, ChevronRight } from 'lucide-react';
+import { Terminal, Shield, Zap, Sparkles, PhoneCall, ChevronRight, Sun, Moon } from 'lucide-react';
 import { ViewMode } from '../types';
+import { useTheme } from '../context/ThemeContext';
 
 interface NavbarProps {
   currentView: ViewMode;
@@ -15,6 +16,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenDemo,
   onOpenEarlyAccess,
 }) => {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-slate-950/80 border-b border-white/5 transition-all duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
@@ -79,8 +82,24 @@ export const Navbar: React.FC<NavbarProps> = ({
           )}
         </div>
 
-        {/* Right CTA Area + Special 'For Devs' Button */}
-        <div className="flex items-center gap-4">
+        {/* Right CTA Area + Theme Toggle + Special 'For Devs' Button */}
+        <div className="flex items-center gap-3">
+          
+          {/* Light / Dark Mode Toggle */}
+          <button
+            id="theme-toggle-btn"
+            type="button"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            className="p-2 rounded-xl border border-white/10 hover:border-white/20 bg-slate-900/60 hover:bg-slate-900 text-slate-300 hover:text-white transition-all cursor-pointer shadow-sm"
+          >
+            {theme === 'dark' ? (
+              <Sun className="w-4 h-4 text-amber-400 hover:rotate-45 transition-transform" />
+            ) : (
+              <Moon className="w-4 h-4 text-blue-600 hover:-rotate-12 transition-transform" />
+            )}
+          </button>
           
           {/* SPECIAL REQUIREMENT: "For Devs" Secondary Ghost Button */}
           <button

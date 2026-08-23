@@ -1,6 +1,7 @@
 import React from 'react';
-import { Zap, Terminal, Shield, Heart, Lock } from 'lucide-react';
+import { Zap, Terminal, Shield, Heart, Lock, Sun, Moon } from 'lucide-react';
 import { ViewMode } from '../types';
+import { useTheme } from '../context/ThemeContext';
 
 interface FooterProps {
   onNavigate: (view: ViewMode) => void;
@@ -9,6 +10,8 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEarlyAccess, onOpenAdminAccess }) => {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <footer className="bg-slate-950 border-t border-white/5 pt-16 pb-12 text-slate-400 text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,7 +89,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEarlyAccess, o
 
         </div>
 
-        {/* Bottom copyright & Discreet Admin Lock */}
+        {/* Bottom copyright & Theme Toggle & Discreet Admin Lock */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500 font-mono">
           <div className="flex items-center gap-3">
             <span>
@@ -107,6 +110,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEarlyAccess, o
             )}
           </div>
           <div className="flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900 border border-white/5 hover:border-white/15 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
+            >
+              {theme === 'dark' ? <Sun className="w-3 h-3 text-amber-400" /> : <Moon className="w-3 h-3 text-blue-500" />}
+              <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+            </button>
             <button
               onClick={() => onNavigate('for-devs')}
               className="text-slate-400 hover:text-blue-400 font-mono flex items-center gap-1 cursor-pointer"
