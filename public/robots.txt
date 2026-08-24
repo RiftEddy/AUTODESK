@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://autodeck.ai/sitemap.xml
+Sitemap: https://ais-pre-y6e76so3sb4xt7zr3tcwhk-672109794756.europe-west2.run.app/sitemap.xml
