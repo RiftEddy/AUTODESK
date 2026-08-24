@@ -14,6 +14,7 @@ import { ForDevsPage } from './components/ForDevsPage';
 import { EarlyAccessModal } from './components/EarlyAccessModal';
 import { AdminAccessModal } from './components/AdminAccessModal';
 import { NdaConsentModal } from './components/NdaConsentModal';
+import { Play, Sparkles, Terminal } from 'lucide-react';
 import { ViewMode } from './types';
 
 function MainLayout() {
@@ -115,6 +116,38 @@ function MainLayout() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Mobile Floating Action Quick-Dock */}
+      <div className="md:hidden fixed bottom-3 inset-x-3 z-40 flex items-center justify-between p-1.5 rounded-2xl bg-[#0d131f]/95 backdrop-blur-md border border-slate-700/80 shadow-2xl">
+        <button
+          onClick={handleScrollToDemo}
+          className="flex-1 py-2 px-2 rounded-xl text-xs font-semibold text-slate-200 hover:bg-slate-800/80 active:bg-slate-800 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+        >
+          <Play className="w-3.5 h-3.5 fill-blue-400 text-blue-400" />
+          <span>Live Demo</span>
+        </button>
+
+        <div className="h-5 w-px bg-slate-800 mx-1" />
+
+        <button
+          onClick={() => setIsEarlyAccessOpen(true)}
+          className="flex-1 py-2 px-2.5 rounded-xl text-xs font-semibold bg-blue-600 active:bg-blue-700 text-white flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
+        >
+          <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
+          <span>Request Pilot</span>
+        </button>
+
+        <div className="h-5 w-px bg-slate-800 mx-1" />
+
+        <button
+          onClick={() => handleNavigate(currentView === 'landing' ? 'for-devs' : 'landing')}
+          className="py-2 px-2.5 rounded-xl text-[11px] font-mono text-slate-400 hover:text-white hover:bg-slate-800/80 active:bg-slate-800 flex items-center justify-center gap-1 transition-colors cursor-pointer"
+          title="Toggle Developer Mode"
+        >
+          <Terminal className="w-3.5 h-3.5 text-cyan-400" />
+          <span>{currentView === 'landing' ? 'Devs' : 'Home'}</span>
+        </button>
+      </div>
 
       {/* Early Access / 14-Day Free Pilot Modal */}
       <EarlyAccessModal

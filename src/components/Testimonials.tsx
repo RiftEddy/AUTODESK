@@ -1,36 +1,35 @@
 import React from 'react';
-import { Star, Quote, CheckCircle2, Building2 } from 'lucide-react';
+import { Star, CheckCircle2 } from 'lucide-react';
 import { TESTIMONIALS } from '../data/mockData';
 
 export const Testimonials: React.FC = () => {
   return (
-    <section className="py-20 bg-slate-950 relative">
+    <section className="py-16 md:py-24 bg-[#0b0f17] border-b border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-3 font-mono">
-            <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-            <span>Field Proven Results</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold uppercase tracking-wider mb-3 font-mono">
+            <span>Contractor Feedback</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight font-['Outfit']">
-            Trusted by 450+ trade contractors across the country
+            Trusted by 450+ trade contractors
           </h2>
-          <p className="mt-3 text-slate-400 text-base sm:text-lg">
-            See how real plumbing, HVAC, electrical, and landscaping owners are putting their sales on autopilot.
+          <p className="mt-3 text-slate-400 text-base">
+            See how HVAC, plumbing, electrical, and roofing business owners are managing quotes and dispatching with Autodeck.
           </p>
         </div>
 
         {/* Testimonial Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {TESTIMONIALS.map((item, idx) => (
             <div
               key={idx}
-              className="rounded-2xl glass-card border border-white/5 p-6 flex flex-col justify-between relative shadow-xl hover:border-white/15 transition-colors"
+              className="surface-card rounded-xl p-6 flex flex-col justify-between border border-slate-800"
             >
               <div>
                 {/* Metric pill */}
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold font-mono mb-4">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800 text-xs font-mono font-medium mb-4">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   <span>{item.metric}</span>
                 </div>
@@ -43,18 +42,18 @@ export const Testimonials: React.FC = () => {
                 </div>
 
                 {/* Quote */}
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed italic">
+                <p className="text-xs text-slate-300 leading-relaxed italic">
                   "{item.quote}"
                 </p>
               </div>
 
               {/* Author Info */}
-              <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+              <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
                 <div>
-                  <div className="text-sm font-bold text-white font-['Outfit']">
+                  <div className="text-sm font-semibold text-white font-['Outfit']">
                     {item.author}
                   </div>
-                  <div className="text-[11px] text-blue-400 font-medium">
+                  <div className="text-[11px] text-blue-400">
                     {item.role} • {item.company}
                   </div>
                   <div className="text-[10px] text-slate-500">
@@ -68,15 +67,16 @@ export const Testimonials: React.FC = () => {
 
         {/* Integrations Strip */}
         <div className="mt-16 text-center">
-          <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-6 font-mono">
-            Seamlessly Integrates With Your Existing Field Stack
+          <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-4 font-mono">
+            Integrates directly with your current software stack
           </span>
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-slate-400 text-xs font-semibold">
-            <span className="px-3.5 py-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300">⚡ Google Calendar</span>
-            <span className="px-3.5 py-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300">💳 Stripe & Square</span>
-            <span className="px-3.5 py-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300">📗 QuickBooks Online</span>
-            <span className="px-3.5 py-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300">🛠️ Jobber & Housecall Pro</span>
-            <span className="px-3.5 py-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300">📱 Twilio & Apple Messages</span>
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-slate-300">
+            <span className="px-3 py-1.5 rounded-md bg-slate-900 border border-slate-800">Google Calendar</span>
+            <span className="px-3 py-1.5 rounded-md bg-slate-900 border border-slate-800">Stripe & Square</span>
+            <span className="px-3 py-1.5 rounded-md bg-slate-900 border border-slate-800">QuickBooks Online</span>
+            <span className="px-3 py-1.5 rounded-md bg-slate-900 border border-slate-800">Jobber</span>
+            <span className="px-3 py-1.5 rounded-md bg-slate-900 border border-slate-800">Housecall Pro</span>
+            <span className="px-3 py-1.5 rounded-md bg-slate-900 border border-slate-800">Twilio SMS</span>
           </div>
         </div>
 

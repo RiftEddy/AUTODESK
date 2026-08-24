@@ -1,7 +1,6 @@
 import React from 'react';
-import { Zap, Terminal, Shield, Heart, Lock, Sun, Moon } from 'lucide-react';
+import { Layers, Terminal, Lock } from 'lucide-react';
 import { ViewMode } from '../types';
-import { useTheme } from '../context/ThemeContext';
 
 interface FooterProps {
   onNavigate: (view: ViewMode) => void;
@@ -10,139 +9,132 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEarlyAccess, onOpenAdminAccess }) => {
-  const { theme, toggleTheme } = useTheme();
-
   return (
-    <footer className="bg-slate-950 border-t border-white/5 pt-16 pb-12 text-slate-400 text-xs">
+    <footer className="bg-[#0b0f17] border-t border-slate-800 pt-16 pb-24 md:pb-12 text-slate-400 text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 pb-12 border-b border-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
           
           {/* Brand Col */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/30">
-                <Zap className="w-4 h-4 text-white" />
+              <div className="w-7 h-7 rounded-md bg-blue-600 flex items-center justify-center">
+                <Layers className="w-3.5 h-3.5 text-white" />
               </div>
-              <span className="text-lg font-bold text-white font-['Outfit'] tracking-tight">
+              <span className="text-base font-bold text-white font-['Outfit'] tracking-tight">
                 AUTODECK
               </span>
             </div>
             <p className="text-slate-400 text-xs max-w-sm leading-relaxed">
-              The autonomous AI front desk and sales closer for service businesses and trade contractors. Instant quotes, 24/7 text negotiation, and zero-touch booking.
+              Autonomous quoting, 24/7 SMS lead response, and automated calendar dispatching for residential and commercial trade businesses.
             </p>
-            <div className="flex items-center gap-2 text-[11px] text-emerald-400 font-mono">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>All Systems Operational • 99.99% Quote Engine Uptime</span>
+            <div className="flex items-center gap-2 text-[11px] text-slate-400 font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span>All Systems Operational • Uptime 99.98%</span>
             </div>
           </div>
 
           {/* Col 1: Product */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">
-              Product
+            <h4 className="text-xs font-semibold text-white uppercase tracking-wider font-mono">
+              Platform
             </h4>
             <ul className="space-y-2">
-              <li><a href="#how-it-works" className="hover:text-white transition-colors">How It Works</a></li>
-              <li><a href="#live-demo" className="hover:text-white transition-colors">Live Simulation</a></li>
-              <li><a href="#features" className="hover:text-white transition-colors">Margin Guardrails</a></li>
+              <li><a href="#how-it-works" className="hover:text-white transition-colors">Workflow</a></li>
+              <li><a href="#live-demo" className="hover:text-white transition-colors">Interactive Demo</a></li>
+              <li><a href="#features" className="hover:text-white transition-colors">Capabilities</a></li>
               <li><a href="#calculator" className="hover:text-white transition-colors">ROI Calculator</a></li>
-              <li><a href="#pricing" className="hover:text-white transition-colors">Contractor Pricing</a></li>
+              <li><a href="#pricing" className="hover:text-white transition-colors">Pricing Plans</a></li>
             </ul>
           </div>
 
           {/* Col 2: Supported Trades */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">
-              Trades
+            <h4 className="text-xs font-semibold text-white uppercase tracking-wider font-mono">
+              Supported Trades
             </h4>
-            <ul className="space-y-2">
-              <li><span className="hover:text-white cursor-pointer">HVAC & Heating</span></li>
-              <li><span className="hover:text-white cursor-pointer">Master Plumbing</span></li>
-              <li><span className="hover:text-white cursor-pointer">Electrical Contractors</span></li>
-              <li><span className="hover:text-white cursor-pointer">Landscaping & Tree</span></li>
-              <li><span className="hover:text-white cursor-pointer">Roofing & Remodeling</span></li>
+            <ul className="space-y-2 text-slate-400">
+              <li>HVAC & Heating</li>
+              <li>Plumbing & Water Heaters</li>
+              <li>Electrical & Panels</li>
+              <li>Landscaping & Tree Care</li>
+              <li>Roofing & Remodeling</li>
             </ul>
           </div>
 
-          {/* Col 3: Developers & Company */}
+          {/* Col 3: Developers & Admin */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">
-              Developers
+            <h4 className="text-xs font-semibold text-white uppercase tracking-wider font-mono">
+              Integrations & Portal
             </h4>
             <ul className="space-y-2">
               <li>
                 <button
                   onClick={() => onNavigate('for-devs')}
-                  className="hover:text-blue-400 transition-colors flex items-center gap-1.5 text-slate-300 font-mono cursor-pointer"
+                  className="hover:text-white transition-colors flex items-center gap-1.5 text-slate-300 font-mono cursor-pointer"
                 >
-                  <Terminal className="w-3.5 h-3.5" />
-                  <span>For Devs Portal</span>
+                  <Terminal className="w-3.5 h-3.5 text-blue-400" />
+                  <span>Developer Portal</span>
                 </button>
               </li>
-              <li><span className="hover:text-white cursor-pointer">API & Webhooks</span></li>
-              <li><span className="hover:text-white cursor-pointer">Pricebook Schema</span></li>
-              <li><span className="hover:text-white cursor-pointer">Privacy & SOC-2</span></li>
-              <li><span className="hover:text-white cursor-pointer">Terms of Service</span></li>
+              <li><span className="hover:text-white">QuickBooks Sync</span></li>
+              <li><span className="hover:text-white">Jobber & Housecall Pro API</span></li>
+              <li><span className="hover:text-white">Twilio & Stripe Webhooks</span></li>
             </ul>
           </div>
 
         </div>
 
-        {/* Bottom copyright & Theme Toggle & Discreet Admin Lock */}
+        {/* Bottom copyright, nialekaeti Watermark & Discreet Admin Lock */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500 font-mono">
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <span>
-              © {new Date().getFullYear()} Autodeck Technologies, Inc. All rights reserved.
+              © {new Date().getFullYear()} Autodeck Technologies. All rights reserved.
             </span>
-            {/* Hidden / Discreet Admin Lock Symbol */}
+            <span>•</span>
+            <a
+              href="https://nialekaeti.netlify.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-bold font-mono shadow-sm hover:border-slate-700 transition-all"
+            >
+              <span className="text-white">niale</span>
+              <span className="text-red-500">kaeti</span>
+            </a>
             {onOpenAdminAccess && (
               <button
-                type="button"
-                id="footer-hidden-admin-lock-btn"
                 onClick={onOpenAdminAccess}
-                title="Admin Application Vault"
-                aria-label="Admin Application Vault"
-                className="opacity-20 hover:opacity-100 p-1 rounded-md text-slate-500 hover:text-slate-200 hover:bg-slate-900 transition-all duration-300 cursor-pointer"
+                title="Admin portal"
+                className="opacity-40 hover:opacity-100 transition-opacity p-1 text-slate-500 hover:text-slate-300 cursor-pointer"
               >
-                <Lock className="w-3.5 h-3.5" />
+                <Lock className="w-3 h-3" />
               </button>
             )}
           </div>
-          <div className="flex items-center gap-4">
-            <button
-              onClick={toggleTheme}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900 border border-white/5 hover:border-white/15 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
-            >
-              {theme === 'dark' ? <Sun className="w-3 h-3 text-amber-400" /> : <Moon className="w-3 h-3 text-blue-500" />}
-              <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
-            </button>
-            <button
-              onClick={() => onNavigate('for-devs')}
-              className="text-slate-400 hover:text-blue-400 font-mono flex items-center gap-1 cursor-pointer"
-            >
-              <span>Built by developers for modern service pros</span>
-            </button>
-          </div>
-        </div>
 
-        {/* Made by NIALEKAETI Watermark */}
-        <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-center">
-          <a
-            href="https://nialekaeti.netlify.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            id="watermark-nialekaeti"
-            className="group inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-950/90 hover:bg-slate-900 border border-white/10 hover:border-red-500/40 text-xs font-mono transition-all duration-300 shadow-md hover:shadow-red-500/10 cursor-pointer"
-          >
-            <span className="text-slate-400 group-hover:text-slate-300 transition-colors text-[11px] uppercase tracking-wider">
-              Made by
+          <div className="flex items-center gap-3">
+            <span>
+              crafted by{' '}
+              <a
+                href="https://nialekaeti.netlify.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold font-mono hover:underline"
+              >
+                <span className="text-white">niale</span>
+                <span className="text-red-500">kaeti</span>
+              </a>
             </span>
-            <span className="font-extrabold tracking-widest text-xs uppercase inline-flex items-center">
-              <span className="text-white" style={{ color: '#ffffff' }}>NIALE</span>
-              <span className="text-red-500" style={{ color: '#ef4444' }}>KAETI</span>
-            </span>
-          </a>
+            <span>•</span>
+            <button
+              onClick={onOpenEarlyAccess}
+              className="text-slate-400 hover:text-white transition-colors cursor-pointer"
+            >
+              Request Access
+            </button>
+            <span>•</span>
+            <span className="text-slate-500">v2.4.0 Production</span>
+          </div>
         </div>
 
       </div>
